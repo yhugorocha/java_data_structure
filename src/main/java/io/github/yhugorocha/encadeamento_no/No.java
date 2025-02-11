@@ -5,12 +5,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class No {
+public class No<T> {
 
-    private String content;
-    private No nextNo;
+    private T content;
+    private No<T> nextNo;
 
-    public No (String content){
+    public No (T content){
         this.nextNo = null;
         this.content = content;
     }
