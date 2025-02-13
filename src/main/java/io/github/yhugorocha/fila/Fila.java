@@ -1,23 +1,23 @@
 package io.github.yhugorocha.fila;
 
-public class Fila {
+public class Fila<T> {
 
-    private No refNo;
+    private No<T> refNo;
 
     public Fila(){
         this.refNo = null;
     }
 
-    public void enqueue(Object obj){
-        No newNo = new No(obj);
+    public void enqueue(T obj){
+        No<T> newNo = new No<>(obj);
         newNo.setRefNo(refNo);
         refNo = newNo;
     }
 
-    public Object dequeue(){
+    public T dequeue(){
         if(!this.isEmpty()){
-            No firstNo = refNo;
-            No aux = refNo;
+            No<T> firstNo = refNo;
+            No<T> aux = refNo;
             while (true){
                 if(firstNo.getRefNo() != null){
                     aux = firstNo;
@@ -32,9 +32,9 @@ public class Fila {
         return null;
     }
 
-    public Object first(){
+    public T first(){
         if(!this.isEmpty()){
-            No firstNo = refNo;
+            No<T> firstNo = refNo;
             while (true){
                 if(firstNo.getRefNo() != null){
                     firstNo = firstNo.getRefNo();
@@ -57,7 +57,7 @@ public class Fila {
         stringRetorno += "      FILA       \n";
         stringRetorno += "------------------\n";
 
-        No noAux = this.refNo;
+        No<T> noAux = this.refNo;
 
         if (this.refNo != null){
             while (true){
